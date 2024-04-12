@@ -42,26 +42,26 @@ else:
 ## Writeup
 
 ### Understanding the Challenge
-For this challenge I am confronted with a programm that prints the values `c`, `n` and $\phi(n)$ from an RSA encryption.
+For this challenge I am confronted with a programm that prints the values `c`, `n` and `phi(n)` from an RSA encryption.
 I need to calculate `p`, `q` and the secret `message` and provide those values to the program.
 
 ### Solving the Challenge
-I wrote a solve script that reads the values of `c`, `n` and $\phi(n)$ from the program.
-As the value of $\phi(n)$ is known, it is simple to decode the message from the ciphertext as I can easily calculate the decryption key `d`.
-Based on the equation $e * d \equiv 1 $ (mod $\phi(n)$) the decryption key can be calculated as the multiplicative inverse of the encryption key `e` within the finite field of $\phi(n)$
-The equation can be rearranged to be $d = e^{-1}$ mod $\phi(n)$ for the calculation of `d`.
+I wrote a solve script that reads the values of `c`, `n` and `phi(n)` from the program.
+As the value of `phi(n)` is known, it is simple to decode the message from the ciphertext as I can easily calculate the decryption key `d`.
+Based on the equation `e * d = 1 (mod phi(n))` the decryption key can be calculated as the multiplicative inverse of the encryption key `e` within the finite field of `phi(n)`
+The equation can be rearranged to be `d = e⁻¹ (mod phi(n))` for the calculation of `d`.
 
 With a little maths and the help of `z3` I could also calculate the values for `p` and `q`.
-As $\phi(n) = (p - 1) * (q - 1)$ I could multiply out the formula to get $\phi(n) = pq - q - p + 1$.
-With replacing $p * q$ by $n$ and a little more rearrangement I set up the following equation: $p + q = -1 * (\phi(n) - n - 1)$.
-I put this equation as well as the well-known $p * q = n$ into the `z3`-solver which calculates the values of `p` and `q` based on these equations.
+As `phi(n) = (p - 1) * (q - 1)` I could multiply out the formula to get `phi(n) = pq - q - p + 1`.
+With replacing `p * q` by `n` and a little more rearrangement I set up the following equation: `p + q = -1 * (phi(n) - n - 1)`.
+I put this equation as well as the well-known `p * q = n` into the `z3`-solver which calculates the values of `p` and `q` based on these equations.
 
 Finally I could send those values to the program.
 The message needed to be a hex value.
 
 ### Alternative Solutions
 After solving the challenge I figured out that there actually is a way to calculate the values of `p` and `q` without the help of `z3`.
-It is documented on this [page](https://crypto.stackexchange.com/questions/5791/why-is-it-important-that-phin-is-kept-a-secret-in-rsa) how the knowledge of $\phi(n)$ can be used to break RSA.
+It is documented on this [page](https://crypto.stackexchange.com/questions/5791/why-is-it-important-that-phin-is-kept-a-secret-in-rsa) how the knowledge of `phi(n)` can be used to break RSA.
 
 By further rearranging the formula it is possible to calculate `p` and `q` with the abc-formula.
 This approach is also used for the author's solve script.
