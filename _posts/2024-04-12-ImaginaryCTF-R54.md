@@ -1,3 +1,9 @@
+---
+layout: post
+title: ImaginaryCTF - R54
+tags: CTF Writeup Crypto RSA
+---
+
 **CTF:** [ImaginaryCTF](https://imaginaryctf.org/ArchivedChallenges) - Challenge from March 18, 2024
 
 **Challenge-Name:** R54
@@ -139,7 +145,6 @@ io.sendline(str(message).encode())
 io.readuntil(b"Enter p: Enter q: Enter the secret message as hex: ")
 flag = io.readline().strip()
 print(flag)
-
 ```
 
 ### flag

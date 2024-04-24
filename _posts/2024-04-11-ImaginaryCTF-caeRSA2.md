@@ -1,3 +1,9 @@
+---
+layout: post
+title: ImaginaryCTF - caeRSA2
+tags: CTF Writeup Crypto RSA
+---
+
 **CTF:** [ImaginaryCTF](https://imaginaryctf.org/ArchivedChallenges) - Challenge from November 02, 2023
 
 **Challenge-Name:** caeRSA2

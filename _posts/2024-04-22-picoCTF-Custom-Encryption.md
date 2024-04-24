@@ -1,3 +1,9 @@
+---
+layout: post
+title: picoCTF - Custom Encryption
+tags: CTF Writeup Crypto
+---
+
 **CTF:** [picoCTF](https://picoctf.org/) (from March 12, 2024 to March 26, 2024)
 
 **Challenge-Name:** Custom Encryption
@@ -82,7 +88,6 @@ def test(plain_text, text_key):
 if __name__ == "__main__":
 	message = sys.argv[1]
 	test(message, "trudeau")
-
 ```
 
 `enc_flag`:
