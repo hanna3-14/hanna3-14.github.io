@@ -2,6 +2,7 @@
 layout: post
 title: ImaginaryCTF - caeRSA
 tags: CTF Writeup Crypto RSA
+category: writeup
 ---
 
 **CTF:** [ImaginaryCTF](https://imaginaryctf.org/ArchivedChallenges) - Challenge from October 31, 2023

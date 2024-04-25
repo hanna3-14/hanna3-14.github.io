@@ -2,6 +2,7 @@
 layout: post
 title: picoCTF - Custom Encryption
 tags: CTF Writeup Crypto
+category: writeup
 ---
 
 **CTF:** [picoCTF](https://picoctf.org/) (from March 12, 2024 to March 26, 2024)

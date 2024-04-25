@@ -2,6 +2,7 @@
 layout: post
 title: ImaginaryCTF - R54
 tags: CTF Writeup Crypto RSA
+category: writeup
 ---
 
 **CTF:** [ImaginaryCTF](https://imaginaryctf.org/ArchivedChallenges) - Challenge from March 18, 2024

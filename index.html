@@ -2,13 +2,33 @@
 layout: default
 title: Blog
 ---
-<h1>Latest Flags</h1>
 
+<h1>Latest Flags</h1>
+<p>Here are some writeups for the latest flags I have captured.</p>
 <ul>
 	{% for post in site.posts %}
+	{% if post.category contains 'writeup' %}
 	<li>
 		<h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
 		{{ post.excerpt }}
 	</li>
+	{% endif %}
+	{% endfor %}
+</ul>
+
+<h1>Learnings</h1>
+<p>
+	Some knowledge about encryption algorithm is the foundation for solving Crypto CTF challenges.
+	I am planning to create some sort of reference book for things I have learned while solving CTF challenges or things
+	I often have to look up while playing CTF.
+</p>
+<ul>
+	{% for post in site.posts %}
+	{% if post.category contains 'learning' %}
+	<li>
+		<h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+		{{ post.excerpt }}
+	</li>
+	{% endif %}
 	{% endfor %}
 </ul>
