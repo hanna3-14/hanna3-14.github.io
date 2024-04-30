@@ -115,8 +115,8 @@ The key stays the same for each character.
 For decrypting the flag, the second step has to be decrypted first.
 The resulting semi cipher can then be decrypted by reverting the first step.
 
-As I know the values of `p` and `g`, I can easily calculate the key that has been used within the second step of the encryption.
-The key can be calculated as `key = g ^ (a * b) % p`.
+As I know the values of $p$ and $g$, I can easily calculate the key that has been used within the second step of the encryption.
+The key can be calculated as $key = g ^ {a * b}\ mod\ p$.
 Afterwards I can undo the second step of the encryption by dividing each number of the cipher by 311 and afterwards dividing it by the calculated key.
 
 For reverting the first encryption step I applied the same stream cipher with the same key ("trudeau") that has been used for the encryption.

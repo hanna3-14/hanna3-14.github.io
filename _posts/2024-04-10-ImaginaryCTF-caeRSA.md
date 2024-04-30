@@ -54,44 +54,44 @@ print(f"{leak = }")
 
 ### Understanding the Challenge
 For this challenge the flag is convertet into a long and afterwards encrypted with RSA.
-The `output.txt` file contains the values of `n`, `e`, `c` and `leak`.
+The `output.txt` file contains the values of $n$, $e$, $c$ and $leak$.
 The value of leak is calculated as
 
-`leak = (p + 42) * (q + 69)`
+$leak = (p + 42) * (q + 69)$
 
 ### Solving the Challenge
-To solve this challenge I read the values of the `output.txt` file into the respective variables `n`, `e`, `c` and `leak`.
+To solve this challenge I read the values of the `output.txt` file into the respective variables $n$, $e$, $c$ and $leak$.
 After trying some not so useful brute force attacks I strained my head and did some math.
 
-First of all, I know that `p * q = n`.
+First of all, I know that $p * q = n$.
 
-In addition I have the value of leak as: `leak = (p + 42) * (q + 69)`
+In addition I have the value of leak as: $leak = (p + 42) * (q + 69)$
 
-which can be rearranged as: `leak = (p * q) + 69p + 42q + (42 * 69)`.
+which can be rearranged as: $leak = (p * q) + 69p + 42q + (42 * 69)$.
 
-After replacing `(p * q)` by `n` and rearranging the formula again I get the following equation:
+After replacing $(p * q)$ by $n$ and rearranging the formula again I get the following equation:
 
-`69p + 42q = leak - (42 * 69) - n`
+$$ 69p + 42q = leak - (42 * 69) - n $$
 
-I can rearrange `p * q = n` to get `q = n/p` which leads to the following equation:
+I can rearrange $p * q = n$ to get $q = \frac{n}{p}$ which leads to the following equation:
 
-`69p + 42 * n/p = leak - (42 * 69) - n`
+$$ 69p + 42 * \frac{n}{p} = leak - (42 * 69) - n $$
 
-multiplying this equation by `p` results in:
+multiplying this equation by $p$ results in:
 
-`69p² + 42n = (leak - (42 * 69) - n) * p`
+$$ 69p^2 + 42n = (leak - (42 * 69) - n) * p $$
 
 which is a quadratic equation that can be formatted nicely as:
 
-`69p² - (leak - (42 * 69) - n) * p + 42n = 0`
+$$ 69p^2 - (leak - (42 * 69) - n) * p + 42n = 0 $$
 
 Solving this equation with the `abc-formula` possibly returns two solutions.
 In this case, only one of those solutions is a valid solution.
-I denote the only solution as `p` and calculate `q` by dividing `n` with `p`.
+I denote the only solution as $p$ and calculate $q$ by dividing $n$ with $p$.
 
 Now I have everything that I need to solve this challenge.
-After calculating `φ(n)` the decryption key `d` can be calculated easily as `e` is known from the `output.txt` file.
-As the last two steps I decrypt the cipher (`c`) and convert it to bytes.
+After calculating $\phi(n)$ the decryption key $d$ can be calculated easily as $e$ is known from the `output.txt` file.
+As the last two steps I decrypt the cipher ($c$) and convert it to bytes.
 
 #### Solve Script
 ```python

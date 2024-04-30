@@ -67,18 +67,18 @@ These values are written to the `output.txt` file.
 
 ### Solving the Challenge
 To solve this challenge I read the `output.txt` file line by line.
-For each line I store the ciphertext (`ct`), `p` and `q` in a separate variable.
+For each line I store the ciphertext ($ct$), $p$ and $q$ in a separate variable.
 
 To revert the caesar encryption of p and q, I brute force all possibilities for a shift between 0 and 9.
-If one of these shifts is a prime number I assume that this is the original value of `p` and `q`.
+If one of these shifts is a prime number I assume that this is the original value of $p$ and $q$.
 
-With the information about the original `p` and `q` I can easily calculate `n`.
-More importantly, I am also able to calculate `φ(n)`.
-As I know from the challenge file that `e = 65537` I can calculate `d` as
+With the information about the original $p$ and $q$ I can easily calculate $n$.
+More importantly, I am also able to calculate $\phi(n)$.
+As I know from the challenge file that $e = 65537$ I can calculate $d$ as
 
-`d = e⁻¹ mod φ(n)`
+$$ d = e^{-1}\ mod\ \phi(n) $$
 
-The value of `d` will be different for each line of the `output.txt` file as `p` and `q` are different and therefore `φ(n)` is different.
+The value of $d$ will be different for each line of the `output.txt` file as $p$ and $q$ are different and therefore $\phi(n)$ is different.
 
 Finally, I brute force the caesar shift between 0 and 9 again to decrypt the flag.
 If the decrypted value can be converted to bytes I assume that this value is part of the flag.
